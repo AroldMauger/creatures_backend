@@ -12,7 +12,7 @@ const app = express();
 
 
 // Connexion à la base de données MongoDB //
-mongoose.connect(`mongodb+srv://${process.env.USER_MONGO}:${process.env.PASSWORD_MONGO}@${process.env.DOMAIN_MONGO}`,
+mongoose.connect(`mongodb+srv://AroldMauger:I_Love_Mongo@cluster0.3vp9fh7.mongodb.net`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
