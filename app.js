@@ -10,7 +10,6 @@ const path = require('path');
 
 const app = express();
 
-const PORT = process.env.PORT || 4000;
 
 // Connexion à la base de données MongoDB //
 mongoose.connect(`mongodb+srv://${process.env.USER_MONGO}:${process.env.PASSWORD_MONGO}@${process.env.DOMAIN_MONGO}`,
@@ -28,7 +27,7 @@ mongoose.connect(`mongodb+srv://${process.env.USER_MONGO}:${process.env.PASSWORD
 
 // Configuration CORS //
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
@@ -43,6 +42,9 @@ app.use((req, res, next) => {
   app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
-module.exports = app;
-
+  if (require.main === module) {
+    app.listen(4000, () => {
+      console.log('Le serveur est en écoute sur le port 4000 !');
+    });
+  }
 
