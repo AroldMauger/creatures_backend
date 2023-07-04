@@ -41,7 +41,9 @@ app.use((req, res, next) => {
 // Configuration du middleware pour servir les images statiques du répertoire 'images' //
   app.use('/images', express.static(path.join(__dirname, 'images')));
 
-
+app.use((req, res) => {
+  res.json({message :"l'API EST EN LIGNE"})
+});
 module.exports = app;
 
 
