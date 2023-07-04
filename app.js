@@ -28,16 +28,16 @@ mongoose.connect(`mongodb+srv://${process.env.USER_MONGO}:${process.env.PASSWORD
 
 // Configuration CORS //
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.12:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
 
 // Routes pour les livres //
-  app.use("/books", bookRoutes);
+  app.use("/api/books", bookRoutes);
 // Routes pour l'authentification des utilisateurs //
-  app.use("/auth", userRoutes);
+  app.use("/api/auth", userRoutes);
 // Configuration du middleware pour servir les images statiques du répertoire 'images' //
   app.use('/images', express.static(path.join(__dirname, 'images')));
 
